@@ -4,7 +4,6 @@
 
 import os
 from dotenv import load_dotenv
-
 import requests
 from bs4 import BeautifulSoup
 import firebase_admin
@@ -150,27 +149,5 @@ else:
     print("Error:", response.status_code)
 
 
-# Firebase Admin SDK 초기화
-load_dotenv()
-api_key = os.environ.get("MY_API_KEY")
-cred = credentials.Certificate(api_key) # 서비스 계정 키의 경로를 지정해주세요.
-firebase_admin.initialize_app(cred)
 
-db = firestore.client()
-
-
-# Firestore에 데이터 저장
-collection_ref = db.collection('menu')  # 적절한 컬렉션 이름으로 변경해주세요.
-
-# 데이터 저장
-combined_data_dict = {
-    "data1": data_dict1,
-    "data2": data_dict2,
-    "data3": data_dict3,
-    "data4": data_dict4,
-    "data5": data_dict5,
-    "data6": data_dict6
-}
-
-doc_ref = collection_ref.add(combined_data_dict)
 
